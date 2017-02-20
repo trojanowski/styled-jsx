@@ -301,7 +301,10 @@ export default function ({types: t}) {
             return
           }
 
-          const useSourceMaps = Boolean(state.file.opts.sourceMaps)
+          const useSourceMaps = Boolean(
+            state.file.opts.sourceMaps &&
+            process.env.NODE_ENV !== 'production'
+          )
           let transformedCss
 
           if (useSourceMaps) {
